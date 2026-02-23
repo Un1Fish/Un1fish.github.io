@@ -260,7 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadLink = 'https://t.me/rr4fishbot'
 
     document.querySelectorAll('.download-btn').forEach(btn => {
-        btn.addEventListener('click', () => window.open(downloadLink, '_blank'))
+        btn.addEventListener('click', () => {
+            const pricing = document.getElementById('pricing')
+            if (pricing) {
+                pricing.scrollIntoView({ behavior: 'smooth' })
+            }
+        })
     })
 
     document.querySelectorAll('.price-btn').forEach(btn => {
@@ -349,5 +354,6 @@ scrollBtn.addEventListener('click', () => {
 </script>
 </body>
 </html>
+
 
 
