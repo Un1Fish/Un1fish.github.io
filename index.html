@@ -276,22 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.social-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(btn.dataset.url, '_blank'))
     })
-
-    document.querySelectorAll('.donate-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelector('.support-section').scrollIntoView({ 
-                behavior: 'smooth' 
-            })
-        })
-    })
-
-    document.querySelector('.da-btn').addEventListener('click', () => {
-        window.open(donationAlertsLink, '_blank')
-    })
-
-    document.querySelector('.crypto-btn').addEventListener('click', () => {
-        window.open(cryptoBotLink, '_blank')
-    })
 })
 </script>
 
@@ -356,3 +340,4 @@ scrollBtn.addEventListener('click', () => {
 </script>
 </body>
 </html>
+
