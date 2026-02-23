@@ -29,7 +29,7 @@
             </button>
             <button class="button download-btn">
                 <img src="img/download.png" alt="">
-                Скачать
+                Купить
             </button>
         </div>
     </div>
@@ -41,16 +41,23 @@
             <h1>Overcatch</h1>
             <p>Современный помощник для комфортной и приятной игры в РР4</p>
             <div class="appimg-stats">
-                <div class="users">
-                    <img src="img/users.png" width="16" height="16">
-                    <span class="users-count">0</span>
+                <div class="stat">
+                    <img src="img/users.png">
+                    <span id="online-count">0</span>
+                    <span class="stat-label">онлайн</span>
+                </div>
+
+                <div class="stat">
+                    <img src="img/key.png">
+                    <span id="licensed-count">0</span>
+                    <span class="stat-label">лицензий</span>
                 </div>
             </div>
 
             <div class="appimg-actions">
                 <button class="appimg-btn primary download-btn">
                     <img src="img/download.png" alt="">
-                    Скачать
+                    Купить
                 </button>
                 <button class="appimg-btn secondary scroll-btn" data-target="#about">
                     Подробнее
@@ -75,6 +82,48 @@
             <img src="img/2.png">
             <img src="img/3.png">
             <img src="img/4.png">
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="pricing">
+    <div class="pricing-inner">
+        <h2>Выберите срок лицензии</h2>
+        <p class="pricing-subtitle">
+            Полный доступ ко всем функциям Overcatch
+        </p>
+
+        <div class="pricing-grid">
+
+            <div class="price-card">
+                <h3>1 месяц</h3>
+                <div class="price">119₽</div>
+                <p class="price-desc">Лицензия на 30 дней</p>
+                <button class="price-btn" data-plan="1m">Купить</button>
+            </div>
+
+            <div class="price-card">
+                <h3>3 месяца</h3>
+                <div class="price">299₽</div>
+                <p class="price-desc">Лицензия на 90 дней</p>
+                <button class="price-btn" data-plan="3m">Купить</button>
+            </div>
+
+            <div class="price-card">
+                <h3>6 месяцев</h3>
+                <div class="price">499₽</div>
+                <p class="price-desc">Лицензия на 180 дней</p>
+                <button class="price-btn" data-plan="6m">Купить</button>
+            </div>
+
+            <div class="price-card lifetime">
+                <div class="badge">Лучший выбор</div>
+                <h3>Навсегда</h3>
+                <div class="price">1190₽</div>
+                <p class="price-desc">Бессрочная лицензия</p>
+                <button class="price-btn lifetime-btn" data-plan="lifetime">Купить навсегда</button>
+            </div>
+
         </div>
     </div>
 </section>
@@ -125,26 +174,6 @@
                 <p>Адаптация программы под личные предпочтения.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="support-section">
-    <div class="support-inner">
-        <h2>Поддержите разработку</h2>
-        <p class="support-subtitle">Overcatch остаётся бесплатным благодаря вашей поддержке</p>
-        
-        <div class="donation-buttons">
-            <button class="donation-btn da-btn">
-                <img src="img/donationalerts.png" alt="">
-                DonationAlerts
-            </button>
-            <button class="donation-btn crypto-btn">
-                <img src="img/cryptobot.png" alt="">
-                CryptoBot (USDT)
-            </button>
-        </div>
-        
-        <p class="support-note">Любая сумма поможет в развитии проекта!</p>
     </div>
 </section>
 
@@ -219,9 +248,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const downloadLink = 'https://google.com'
+    const downloadLink = 'https://t.me/rr4fishbot'
 
     document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', () => window.open(downloadLink, '_blank'))
+    })
+
+    document.querySelectorAll('.price-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(downloadLink, '_blank'))
     })
 
@@ -243,9 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.social-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(btn.dataset.url, '_blank'))
     })
-
-    const donationAlertsLink = 'https://dalink.to/rr4fishbot'
-    const cryptoBotLink = 'https://t.me/send?start=IVYjfdWjTc1n'
 
     document.querySelectorAll('.donate-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -295,12 +325,34 @@ fetch('https://api.npoint.io/e816223b09788cf7e194')
         }
     })
     .catch(error => {
-        console.error('Ошибка загрузки версии:', error);
         const versionElement = document.getElementById('app-version');
         if (versionElement) {
             versionElement.textContent = 'ошибка загрузки';
         }
     });
+</script>
+
+<button id="scrollTopBtn">
+    ↑
+</button>
+
+<script>
+const scrollBtn = document.getElementById('scrollTopBtn')
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollBtn.classList.add('show')
+    } else {
+        scrollBtn.classList.remove('show')
+    }
+})
+
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+})
 </script>
 </body>
 </html>
